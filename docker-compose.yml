@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  vulnlab:
+    build: .
+    container_name: vulnlab
+    hostname: vulnlab
+    ports:
+      - "2121:21"    # FTP
+      - "2222:22"    # SSH
+      - "2323:23"    # Telnet
+      - "8080:80"    # HTTP
+      - "33060:3306" # MySQL
+    cap_add:
+      - NET_ADMIN
+    restart: unless-stopped
